@@ -18,9 +18,8 @@ services:
         value: 18.0.0
 
   # Frontend Static Site
-  - type: static
+  - type: static_site
     name: swift-fix-frontend
-    runtime: static
     plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
