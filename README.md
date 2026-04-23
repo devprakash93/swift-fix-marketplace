@@ -55,7 +55,7 @@ npm install
 ```
 Create a `.env` file in the `backend` folder:
 ```env
-MONGODB_URI=mongodb://localhost:27017/swift-fix
+MONGODB_URI=your_mongodb_connection_string_here
 JWT_SECRET=your_secret_key
 PORT=5000
 ```
