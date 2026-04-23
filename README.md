@@ -86,4 +86,4 @@ We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for 
 
 ---
 
-*Built with ❤️ by devprakash93 for the next generation of service platforms.*
+*Built by @devprakash93 to power the next generation of service marketplaces.*
