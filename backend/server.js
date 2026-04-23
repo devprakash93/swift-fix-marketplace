@@ -13,6 +13,7 @@ import paymentRoutes from './routes/paymentRoutes.js';
 import aiRoutes from './routes/aiRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import seedRoutes from './routes/seedRoutes.js';
 import Message from './models/Message.js';
 
 dotenv.config();
@@ -53,6 +54,7 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/seed', seedRoutes);
 
 // Socket.io Logic
 io.on('connection', (socket) => {
