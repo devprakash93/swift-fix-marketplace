@@ -33,5 +33,5 @@ services:
           property: host
     routes:
       - type: rewrite
-        src: /*
-        dest: /index.html
+        source: /*
+        destination: /index.html
