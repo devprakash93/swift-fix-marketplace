@@ -1,7 +1,13 @@
 import axios from "axios";
 
+let apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+// Render injects raw host without protocol or /api suffix (e.g. swift-fix-backend.onrender.com)
+if (apiBaseUrl && !apiBaseUrl.startsWith("http")) {
+  apiBaseUrl = `https://${apiBaseUrl}/api`;
+}
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: apiBaseUrl,
 });
 
 api.interceptors.request.use((config) => {
