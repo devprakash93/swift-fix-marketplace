@@ -528,12 +528,18 @@ function BookingWizard({ service, onBack, onComplete }: { service: any, onBack: 
 
 function ActiveBookingView({ booking, onBack }: { booking: Booking, onBack: () => void }) {
   const { setCurrentBooking, setBookings, bookings } = useApp();
-  const status = booking.status;
-  const history = booking.history || [];
+  const [status, setStatus] = useState<string>(booking.status);
+  const [history, setHistory] = useState<any[]>(booking.history || []);
   const [proCoords, setProCoords] = useState<[number, number] | null>(null);
   const [eta, setEta] = useState<{ duration: number, distance: number } | null>(null);
   const customerCoords: [number, number] | null = booking.location?.coordinates ? 
     [booking.location.coordinates[1], booking.location.coordinates[0]] : null;
+
+  // Sync if booking prop changes (e.g. navigating back and reopening)
+  useEffect(() => {
+    setStatus(booking.status);
+    setHistory(booking.history || []);
+  }, [booking._id]);
 
   useEffect(() => {
     if (booking.professional && typeof booking.professional === 'object' && booking.professional.location?.coordinates) {
