@@ -18,12 +18,13 @@ services:
         value: 18.0.0
 
   # Frontend Static Site
-  - type: static_site
+  - type: web
     name: swift-fix-frontend
+    runtime: static
     plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
-    staticPublishDir: dist
+    staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
         fromService:
