@@ -1,8 +1,12 @@
 import axios from "axios";
 
 let apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
-// Render injects raw host without protocol or /api suffix (e.g. swift-fix-backend.onrender.com)
+// Render injects raw host without protocol or /api suffix
 if (apiBaseUrl && !apiBaseUrl.startsWith("http")) {
+  // If it's just the internal service name, append the render domain
+  if (!apiBaseUrl.includes('.')) {
+    apiBaseUrl = `${apiBaseUrl}.onrender.com`;
+  }
   apiBaseUrl = `https://${apiBaseUrl}/api`;
 }
 

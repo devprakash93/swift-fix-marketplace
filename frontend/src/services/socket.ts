@@ -1,8 +1,11 @@
 import { io } from "socket.io-client";
 
 let socketBaseUrl = import.meta.env.VITE_SOCKET_URL || import.meta.env.VITE_API_URL || "http://localhost:5000";
-// Render injects raw host without protocol (e.g. swift-fix-backend.onrender.com)
+// Render injects raw host without protocol
 if (socketBaseUrl && !socketBaseUrl.startsWith("http")) {
+  if (!socketBaseUrl.includes('.')) {
+    socketBaseUrl = `${socketBaseUrl}.onrender.com`;
+  }
   socketBaseUrl = `https://${socketBaseUrl}`;
 }
 
