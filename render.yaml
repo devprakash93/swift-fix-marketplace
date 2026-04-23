@@ -1,0 +1,37 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: swift-fix-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false # User will need to provide this in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 5000
+      - key: NODE_VERSION
+        value: 18.0.0
+
+  # Frontend Static Site
+  - type: static
+    name: swift-fix-frontend
+    runtime: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishDir: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: swift-fix-backend
+          type: web
+          property: host
+    routes:
+      - type: rewrite
+        src: /*
+        dest: /index.html

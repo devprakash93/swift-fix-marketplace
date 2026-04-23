@@ -81,6 +81,23 @@ Access the app at `http://localhost:5173`.
 ## ⚖️ License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🌐 Deployment (Render.com)
+
+This project is configured for easy deployment on [Render](https://render.com) using the `render.yaml` file.
+
+### Steps to Deploy:
+1.  **Fork/Push** this repository to your GitHub account.
+2.  Log in to [Render Dashboard](https://dashboard.render.com).
+3.  Click **"New +"** and select **"Blueprint"**.
+4.  Connect your GitHub repository.
+5.  Render will automatically detect the `render.yaml` file and configure:
+    -   **Backend Web Service** (Node.js)
+    -   **Frontend Static Site** (Vite/React)
+6.  **Important:** In the Render dashboard, go to the `swift-fix-backend` service settings and add your `MONGODB_URI` environment variable (from MongoDB Atlas).
+7.  The Frontend will automatically connect to the Backend via the `VITE_API_URL` environment variable defined in the blueprint.
+
+---
+
 ## 🤝 Contributing
 We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get started.
 
